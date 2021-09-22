@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>Azure Redis MiddleWare</title>
+    <authors>Marimuthu Kandasamy</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/Marimuthu-Dev/BigInt.AzureRedisCache.MiddleWare</projectUrl>
+    <iconUrl>http://code.benco.io/icon-collection/azure-icons/Cache-Redis.svg</iconUrl>
+    <description>Middle ware for Azure Redis and C# Project</description>
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags>Azure Redis Cache MiddleWare Marimuthu MMK</tags>
+  </metadata>
+</package>
