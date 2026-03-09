@@ -20,23 +20,49 @@ A modern, high-performance, and resilient Azure Redis Cache library for .NET app
 dotnet add package BigInt.AzureRedisCache.MiddleWare
 ```
 
-## Quick Start
+## Usage by .NET Version
 
-### 1. Register the Service
+This package is optimized for all modern .NET versions, including **.NET 6 (LTS)**, **.NET 8 (LTS)**, and **.NET 10 (Preview)**.
 
-In your `Program.cs` or `Startup.cs`:
+### 1. Registration (Program.cs / Minimal API)
+All versions starting from .NET 6 use the same clean registration syntax in `Program.cs`.
 
 ```csharp
 using BigInt.AzureRedisCache.MiddleWare;
 
+var builder = <Application>.CreateBuilder(args);
+
+// Register the Azure Redis Cache Service
 builder.Services.AddAzureRedisCache(options =>
 {
-    options.ConnectionString = "YOUR_REDIS_CONNECTION_STRING";
+    options.ConnectionString = builder.Configuration.GetConnectionString("Redis");
     options.InstanceName = "MyApp"; // Optional prefix for all keys
+    options.DefaultExpiry = TimeSpan.FromHours(24);
+    options.ThrowOnError = false; // Prevents app crashes if Redis is down
 });
 ```
 
 ### 2. Inject and Use
+
+#### **.NET 8 & .NET 10 Style (Primary Constructors)**
+If you are using .NET 8 or 10, simplify your code using Primary Constructors.
+
+```csharp
+public class MyService(IRedisCacheService cache)
+{
+    public async Task ProcessDataAsync(string key)
+    {
+        // Simple Set
+        await cache.SetAsync(key, new { Id = 1, Status = "Active" });
+
+        // Simple Get
+        var data = await cache.GetAsync<dynamic>(key);
+    }
+}
+```
+
+#### **.NET 6 Style (Standard DI)**
+For .NET 6 or older C# versions, use the standard constructor injection.
 
 ```csharp
 public class MyService
@@ -50,13 +76,18 @@ public class MyService
 
     public async Task DoWorkAsync()
     {
-        // Set value
-        await _cache.SetAsync("user:123", new User { Name = "John" }, TimeSpan.FromHours(1));
-
-        // Get value
-        var user = await _cache.GetAsync<User>("user:123");
+        await _cache.SetAsync("user:123", new { Name = "John" }, TimeSpan.FromHours(1));
+        var user = await _cache.GetAsync<dynamic>("user:123");
     }
 }
+```
+
+#### **Minimal API Usage**
+```csharp
+app.MapGet("/cache/{id}", async (string id, IRedisCacheService cache) => 
+{
+    return await cache.GetAsync<object>(id);
+});
 ```
 
 ## Configuration Options

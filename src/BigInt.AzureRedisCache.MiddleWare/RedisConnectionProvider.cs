@@ -41,6 +41,11 @@ namespace BigInt.AzureRedisCache.MiddleWare
         private readonly RedisCacheOptions _options;
         private readonly ILogger<RedisConnectionProvider> _logger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RedisConnectionProvider"/> class.
+        /// </summary>
+        /// <param name="options">The options to use for the Redis connection.</param>
+        /// <param name="logger">The logger to use for logging Redis connection events.</param>
         public RedisConnectionProvider(IOptions<RedisCacheOptions> options, ILogger<RedisConnectionProvider> logger)
         {
             _options = options?.Value ?? throw new ArgumentNullException(nameof(options));
@@ -48,6 +53,7 @@ namespace BigInt.AzureRedisCache.MiddleWare
             _lazyConnection = CreateConnection();
         }
 
+        /// <inheritdoc />
         public IConnectionMultiplexer Connection => _lazyConnection.Value;
 
         private Lazy<ConnectionMultiplexer> CreateConnection()
