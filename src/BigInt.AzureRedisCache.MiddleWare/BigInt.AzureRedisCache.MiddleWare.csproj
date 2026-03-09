@@ -2,15 +2,28 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <PackageId>BigInt.AzureRedisCache.MiddleWare</PackageId>
+    <Version>2.0.0</Version>
+    <Authors>Marimuthu Kandasamy</Authors>
     <Company>BigInt Technical Systems</Company>
     <Product>Azure RedisCache MiddleWare</Product>
-    <Authors>Marimuthu Kandasamy</Authors>
-    <Copyright>Copyright © 2021</Copyright>
+    <Description>Modern, high-performance Redis cache service for .NET applications with full support for Dependency Injection, ILogger, and System.Text.Json serialization.</Description>
+    <PackageProjectUrl>https://github.com/Marimuthu-Dev/BigInt.AzureRedisCache.MiddleWare</PackageProjectUrl>
+    <PackageReleaseNotes>Major refactoring to support modern .NET library standards, Dependency Injection, and Async-only operations.</PackageReleaseNotes>
+    <PackageTags>Azure Redis Cache MiddleWare MMK DependencyInjection ASPNETCore</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>Copyright © 2026</Copyright>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <RepositoryUrl>https://github.com/Marimuthu-Dev/BigInt.AzureRedisCache.MiddleWare</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="StackExchange.Redis" Version="2.2.50" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+    <PackageReference Include="StackExchange.Redis" Version="2.7.33" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
   </ItemGroup>
 
 </Project>
