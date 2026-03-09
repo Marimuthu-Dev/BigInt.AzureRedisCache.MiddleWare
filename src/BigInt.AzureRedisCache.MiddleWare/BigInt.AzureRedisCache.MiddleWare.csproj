@@ -3,13 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <PackageId>BigInt.AzureRedisCache.MiddleWare</PackageId>
-    <Version>2.0.0</Version>
+    <Version>2.0.2</Version>
     <Authors>Marimuthu Kandasamy</Authors>
     <Company>BigInt Technical Systems</Company>
     <Product>Azure RedisCache MiddleWare</Product>
     <Description>Modern, high-performance Redis cache service for .NET applications with full support for Dependency Injection, ILogger, and System.Text.Json serialization.</Description>
     <PackageProjectUrl>https://github.com/Marimuthu-Dev/BigInt.AzureRedisCache.MiddleWare</PackageProjectUrl>
-    <PackageReleaseNotes>Major refactoring to support modern .NET library standards, Dependency Injection, and Async-only operations.</PackageReleaseNotes>
+    <PackageReleaseNotes>Integrated Embedded Icon, SourceLink for debugging, and corrected symbols package alignment.</PackageReleaseNotes>
     <PackageTags>Azure;Redis;Cache;MiddleWare;DependencyInjection;ASPNETCore;HighPerformance;Resilience;StackExchange</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Copyright © 2026</Copyright>
@@ -24,11 +24,8 @@
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-  </PropertyGroup>
-
-  <!-- Enable Deterministic Builds in CI -->
-  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <DebugType>portable</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
